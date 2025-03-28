@@ -15,7 +15,7 @@ export default function ThankYouPage() {
 
   const handleJoinTelegram = () => {
     // Replace with your actual Telegram channel URL
-    window.open("https://t.me/your_channel", "_blank")
+    window.open("https://t.me/+q-fZYo56x7FjMTEy", "_blank")
     // Redirect back to main page after a short delay
     setTimeout(() => {
       router.push("/")

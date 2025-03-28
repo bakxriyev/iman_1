@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import axios from "axios"
 
 interface RegistrationModalProps {
   isOpen: boolean
@@ -32,11 +33,24 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
     setMessage("")
 
     try {
+      // Send data to the backend API
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/users`, formData)
+
+      // Call the onSubmit prop to maintain compatibility with parent component
       await onSubmit(formData)
+
+      // Reset form after successful submission
       setFormData({ full_name: "", phone_number: "", tg_user: "" })
+
+      // Show success message briefly before redirecting
+      setMessage("Muvaffaqiyatli ro'yxatdan o'tdingiz!")
+
       // Redirect to thank you page after successful submission
-      router.push("/thank-you")
+      setTimeout(() => {
+        router.push("/thank-you")
+      }, 1000)
     } catch (error) {
+      console.error("Registration error:", error)
       setMessage("Xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring.")
     } finally {
       setLoading(false)
@@ -55,7 +69,13 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
           </button>
         </div>
 
-        {message && <p className="text-center text-lg text-red-600">{message}</p>}
+        {message && (
+          <p
+            className={`text-center text-lg mb-4 ${message.includes("Muvaffaqiyatli") ? "text-green-600" : "text-red-600"} bg-opacity-20 p-3 rounded-lg`}
+          >
+            {message}
+          </p>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <input
@@ -85,9 +105,28 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-6 py-3 bg-pink-600 text-white font-bold rounded-lg hover:bg-pink-700 transition-all"
+            className="w-full px-6 py-3 bg-pink-600 text-white font-bold rounded-lg hover:bg-pink-700 transition-all flex items-center justify-center"
           >
-            {loading ? "Yuborilmoqda..." : "Yuborish"}
+            {loading ? (
+              <>
+                <svg
+                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                Yuborilmoqda...
+              </>
+            ) : (
+              "Yuborish"
+            )}
           </button>
         </form>
       </div>

@@ -37,7 +37,7 @@ export default function Header() {
             <line x1="8" x2="8" y1="2" y2="6" />
             <line x1="3" x2="21" y1="10" y2="10" />
           </svg>
-          <span className="font-medium text-white text-lg">16-17 APREL</span>
+          <span className="font-medium text-white text-lg">17-18 APREL</span>
         </div>
         <div
           className="bg-pink-400 rounded-l-full px-6 py-3 flex items-center space-x-3 shadow-md transform transition-transform hover:scale-105"

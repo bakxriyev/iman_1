@@ -7,7 +7,6 @@ import EventInfo from "./EventInfo"
 import EventBenefits from "./EventBenefits"
 import RegisterButton from "./register-button"
 import RegistrationModal from "./register-modal"
-import FlowerDecorations from "./flowers"
 
 export default function LandingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -21,13 +20,10 @@ export default function LandingPage() {
     phone_number: string
     tg_user: string
   }) => {
-    // In a real app, you would send this data to your backend
+    // This function is now just a callback for the modal component
+    // The actual API call is handled in the RegistrationModal component
     console.log("Form submitted:", data)
-
-    // Close the modal - the redirect is now handled in the modal component
     setIsModalOpen(false)
-
-    // Return a resolved promise to indicate success
     return Promise.resolve()
   }
 
@@ -35,8 +31,6 @@ export default function LandingPage() {
     <div className="min-h-screen bg-gradient-to-b from-purple-100 to-pink-100 relative overflow-hidden">
       {/* Background gradient overlay */}
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-purple-200/50 via-transparent to-pink-200/50"></div>
-
-
 
       <div className="relative z-10 container mx-auto px-4 py-6 min-h-screen flex flex-col">
         {/* Header Section */}
