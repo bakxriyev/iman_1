@@ -24,7 +24,20 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
+
+    if (name === "phone_number") {
+      // For phone number, ensure it starts with +998 and only allow numbers after that
+      const phoneNumberWithoutPrefix = value.startsWith("+998") ? value.substring(4) : value
+      const numericValue = phoneNumberWithoutPrefix.replace(/\D/g, "")
+      setFormData((prev) => ({ ...prev, [name]: `+998${numericValue}` }))
+    } else if (name === "tg_user") {
+      // For telegram username, ensure it starts with @ and remove any @ from the input value
+      const usernameWithoutPrefix = value.startsWith("@") ? value.substring(1) : value
+      setFormData((prev) => ({ ...prev, [name]: `@${usernameWithoutPrefix}` }))
+    } else {
+      // For other fields, just set the value as is
+      setFormData((prev) => ({ ...prev, [name]: value }))
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -86,22 +99,30 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
             className="w-full px-4 py-3 border-2 border-pink-300 rounded-lg focus:ring-2 focus:ring-pink-500"
             placeholder="Ism va familiya"
           />
-          <input
-            name="phone_number"
-            value={formData.phone_number}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 border-2 border-pink-300 rounded-lg focus:ring-2 focus:ring-pink-500"
-            placeholder="+998 XX XXX XX XX"
-          />
-          <input
-            name="tg_user"
-            value={formData.tg_user}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 border-2 border-pink-300 rounded-lg focus:ring-2 focus:ring-pink-500"
-            placeholder="@username"
-          />
+          <div className="relative">
+            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">+998</span>
+            <input
+              name="phone_number"
+              value={
+                formData.phone_number.startsWith("+998") ? formData.phone_number.substring(4) : formData.phone_number
+              }
+              onChange={handleChange}
+              required
+              className="w-full pl-14 px-4 py-3 border-2 border-pink-300 rounded-lg focus:ring-2 focus:ring-pink-500"
+              placeholder="XX XXX XX XX"
+            />
+          </div>
+          <div className="relative">
+            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">@</span>
+            <input
+              name="tg_user"
+              value={formData.tg_user.startsWith("@") ? formData.tg_user.substring(1) : formData.tg_user}
+              onChange={handleChange}
+              required
+              className="w-full pl-8 px-4 py-3 border-2 border-pink-300 rounded-lg focus:ring-2 focus:ring-pink-500"
+              placeholder="username"
+            />
+          </div>
           <button
             type="submit"
             disabled={loading}
