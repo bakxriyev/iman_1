@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { useEffect, useState } from "react"
 
-export default function Logo() {
+export default function  Logo() {
   const [animate, setAnimate] = useState(false)
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function Logo() {
           "Dangasalikni 
         </h1>
         <h1 className="text-4xl md:text-6xl lg:text-6xl leading-tight" style={serifStyle}>
-          Yengish usullari"
+          Yengishning samarali usullari"
         </h1>
       </div>
 
