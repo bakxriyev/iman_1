@@ -14,11 +14,6 @@ export default function Header() {
       <div className="w-full flex justify-between mb-6">
         <div
           className="bg-pink-400 rounded-r-full px-6 py-3 flex items-center space-x-3 shadow-md transform transition-transform hover:scale-105"
-          style={{
-            transform: animate ? "translateX(0)" : "translateX(-50px)",
-            opacity: animate ? 1 : 0,
-            transition: "all 0.6s ease-out",
-          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -41,11 +36,6 @@ export default function Header() {
         </div>
         <div
           className="bg-pink-400 rounded-l-full px-6 py-3 flex items-center space-x-3 shadow-md transform transition-transform hover:scale-105"
-          style={{
-            transform: animate ? "translateX(0)" : "translateX(50px)",
-            opacity: animate ? 1 : 0,
-            transition: "all 0.6s ease-out",
-          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
