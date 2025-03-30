@@ -53,7 +53,7 @@ export default function EventBenefits() {
       ),
     },
     {
-      text: "Orzular orzuligacha qolmasdan ularni amalga oshirish formulalari",
+      text: "O'ziga bo'lgan ishonchni oshirish mumkinligi",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -104,8 +104,9 @@ export default function EventBenefits() {
         transitionDelay: "0.7s",
       }}
     >
-      <h2 className="text-center text-3xl font-bold text-pink-900 mb-8 bg-white/50 px-6 py-3 rounded-full shadow-md inline-block mx-auto">
-        VEBINARDAN QANDAY FOYDALAR OLASIZ?
+      <h2 className="text-center text-2xl font-bold text-pink-900 mb-8 bg-white/50 px-6 py-3 rounded-full shadow-md inline-block mx-auto">
+      BEPUL VEBINARDAN QANDAY FOYDALAR OLASIZ?
+
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

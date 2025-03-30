@@ -9,6 +9,7 @@ export default function EventInfo() {
 
   const topics = [
     "Nega Maqsadlarga erishish QIYINDEK tuyiladi?",
+    "O'ziga bo'lgan ishonch Muvaffaqiyat kaliti",
     "Dangasalikning kelib chiqish sabablari?",
     "Intizomga qanday qilib erishish mumkin?",
     "Maqsad yo'lida Fail bo`lishning asl sabablari"
@@ -17,8 +18,8 @@ export default function EventInfo() {
   return (
     <>
       <div className="flex justify-center mb-6">
-        <h2 className="text-3xl md:text-4xl font-semibold text-white bg-pink-500 px-8 py-4 rounded-full shadow-lg text-center">
-          BEPUL VEBINAR DAVOMIDA
+        <h2 className="text-2xl md:text-4xl font-semibold text-white bg-pink-500 px-10 py-6 rounded-full shadow-lg text-center">
+        JONLI BEPUL VEBINAR DAVOMIDA QUYIDAGILAR HAQIDA GAPLASHAMIZ:
         </h2>
       </div>
       <div 
