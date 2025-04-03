@@ -1,14 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
-
 export default function EventBenefits() {
-  const [animate, setAnimate] = useState(false)
-
-  useEffect(() => {
-    setAnimate(true)
-  }, [])
-
   const benefits = [
     {
       text: "Dangasalikdan qutilish va Maqsadlarga erishishning qadamma-qadam bosqichlari",
@@ -96,27 +88,16 @@ export default function EventBenefits() {
   ]
 
   return (
-    <div
-      className="mb-10 transform transition-all duration-700"
-      style={{
-        transform: animate ? "translateY(0)" : "translateY(30px)",
-        opacity: animate ? 1 : 0,
-        transitionDelay: "0.7s",
-      }}
-    >
+    <div className="mb-10">
       <h2 className="text-center text-2xl font-bold text-pink-900 mb-8 bg-white/50 px-6 py-3 rounded-full shadow-md inline-block mx-auto">
-      BEPUL VEBINARDAN QANDAY FOYDALAR OLASIZ?
-
+        BEPUL VEBINARDAN QANDAY FOYDALAR OLASIZ?
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {benefits.map((benefit, index) => (
           <div
             key={index}
-            className="bg-gradient-to-br from-pink-100 to-purple-100 rounded-xl p-6 flex items-start shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
-            style={{
-              animation: `fadeSlideIn 0.6s ease-out ${0.8 + index * 0.2}s both`,
-            }}
+            className="bg-gradient-to-br from-pink-100 to-purple-100 rounded-xl p-6 flex items-start shadow-lg"
           >
             <div className="mr-4 mt-1 flex-shrink-0 bg-pink-500 text-white p-3 rounded-full">{benefit.icon}</div>
             <p className="text-pink-900 text-lg font-medium">{benefit.text}</p>

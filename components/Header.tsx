@@ -1,20 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react"
-
 export default function Header() {
-  const [animate, setAnimate] = useState(false)
-
-  useEffect(() => {
-    setAnimate(true)
-  }, [])
-
   return (
     <div className="flex flex-col items-center mb-4">
       <div className="w-full flex justify-between mb-6">
-        <div
-          className="bg-pink-400 rounded-r-full px-6 py-3 flex items-center space-x-3 shadow-md transform transition-transform hover:scale-105"
-        >
+        <div className="bg-pink-400 rounded-r-full px-6 py-3 flex items-center space-x-3 shadow-md">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -34,9 +24,7 @@ export default function Header() {
           </svg>
           <span className="font-medium text-white text-lg">17-18 APREL</span>
         </div>
-        <div
-          className="bg-pink-400 rounded-l-full px-6 py-3 flex items-center space-x-3 shadow-md transform transition-transform hover:scale-105"
-        >
+        <div className="bg-pink-400 rounded-l-full px-6 py-3 flex items-center space-x-3 shadow-md">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

@@ -15,11 +15,11 @@ export default function Fireworks() {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
 
-    // Create a light pink background initially
-    ctx.fillStyle = "rgba(253, 242, 248, 1)" // Light pink background
+    // Create a light pink background
+    ctx.fillStyle = "rgba(253, 242, 248, 1)"
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-    // Optimized firework class for better performance
+    // Simplified firework class with fewer particles
     class Firework {
       x: number
       y: number
@@ -32,11 +32,11 @@ export default function Fireworks() {
         this.color = `hsl(${Math.random() * 360}, 100%, 50%)`
         this.particles = []
 
-        // Reduced particle count for better performance
-        const particleCount = 50
+        // Reduced particle count significantly
+        const particleCount = 20
         for (let i = 0; i < particleCount; i++) {
           const angle = Math.PI * 2 * (i / particleCount)
-          const speed = 2 + Math.random() * 2
+          const speed = 2 + Math.random()
 
           this.particles.push(
             new Particle(this.x, this.y, Math.cos(angle) * speed, Math.sin(angle) * speed, this.color),
@@ -60,7 +60,6 @@ export default function Fireworks() {
       }
     }
 
-    // Optimized particle class
     class Particle {
       x: number
       y: number
@@ -77,14 +76,14 @@ export default function Fireworks() {
         this.vy = vy
         this.color = color
         this.alpha = 1
-        this.gravity = 0.03 // Reduced gravity for smoother animation
+        this.gravity = 0.05 // Increased gravity for faster animation
       }
 
       update() {
         this.x += this.vx
         this.y += this.vy
         this.vy += this.gravity
-        this.alpha -= 0.01
+        this.alpha -= 0.02 // Faster fade out
       }
 
       draw(ctx: CanvasRenderingContext2D) {
@@ -99,20 +98,18 @@ export default function Fireworks() {
     const fireworks: Firework[] = []
     let animationFrameId: number
 
-    // Create fireworks at random positions
+    // Create fewer fireworks
     const createFireworks = () => {
       const x = Math.random() * canvas.width
       const y = Math.random() * canvas.height * 0.5
       fireworks.push(new Firework(x, y))
     }
 
-    // Animation loop with performance optimizations
     const animate = () => {
-      // Use a semi-transparent LIGHT PINK rectangle for trail effect instead of black
-      ctx.fillStyle = "rgba(253, 242, 248, 0.2)" // Light pink with transparency
+      // Use a more opaque background for less redrawing
+      ctx.fillStyle = "rgba(253, 242, 248, 0.4)"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      // Update and draw fireworks
       for (let i = fireworks.length - 1; i >= 0; i--) {
         fireworks[i].update()
         fireworks[i].draw(ctx)
@@ -123,27 +120,23 @@ export default function Fireworks() {
       }
 
       // Create new fireworks less frequently
-      if (Math.random() < 0.03 && fireworks.length < 10) {
+      if (Math.random() < 0.02 && fireworks.length < 5) {
         createFireworks()
       }
 
       animationFrameId = requestAnimationFrame(animate)
     }
 
-    // Start animation
-    animate()
-
-    // Create initial fireworks
-    for (let i = 0; i < 5; i++) {
-      setTimeout(() => createFireworks(), i * 300)
+    // Start with fewer initial fireworks
+    for (let i = 0; i < 3; i++) {
+      setTimeout(() => createFireworks(), i * 500)
     }
 
-    // Handle window resize
+    animate()
+
     const handleResize = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
-
-      // Reset the background color after resize
       ctx.fillStyle = "rgba(253, 242, 248, 1)"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
     }

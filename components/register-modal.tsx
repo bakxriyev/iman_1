@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import axios from "axios"
@@ -59,9 +58,7 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
       setMessage("Muvaffaqiyatli ro'yxatdan o'tdingiz!")
 
       // Redirect to thank you page after successful submission
-      setTimeout(() => {
-        router.push("/thank-you")
-      }, 1000)
+      router.push("/thank-you")
     } catch (error) {
       console.error("Registration error:", error)
       setMessage("Xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring.")
@@ -73,11 +70,11 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 animate-fadeIn">
-      <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4 bg-gradient-to-br from-pink-50 to-purple-50 border border-pink-200 shadow-2xl transform animate-scaleIn">
+    <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+      <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4 bg-gradient-to-br from-pink-50 to-purple-50 border border-pink-200 shadow-2xl">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-3xl font-bold text-pink-900">Ro'yxatdan o'tish</h2>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700 transition-colors">
+          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
             ✖
           </button>
         </div>
@@ -126,7 +123,7 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-6 py-3 bg-pink-600 text-white font-bold rounded-lg hover:bg-pink-700 transition-all flex items-center justify-center"
+            className="w-full px-6 py-3 bg-pink-600 text-white font-bold rounded-lg hover:bg-pink-700 flex items-center justify-center"
           >
             {loading ? (
               <>

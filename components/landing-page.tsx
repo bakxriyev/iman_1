@@ -20,8 +20,6 @@ export default function LandingPage() {
     phone_number: string
     tg_user: string
   }) => {
-    // This function is now just a callback for the modal component
-    // The actual API call is handled in the RegistrationModal component
     console.log("Form submitted:", data)
     setIsModalOpen(false)
     return Promise.resolve()
