@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import axios from "axios"
 
@@ -19,7 +19,19 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
   })
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState("")
+  const [animatePrompt, setAnimatePrompt] = useState(false)
   const router = useRouter()
+
+  // Animation effect for the prompt text
+  useEffect(() => {
+    if (isOpen) {
+      const interval = setInterval(() => {
+        setAnimatePrompt((prev) => !prev)
+      }, 2000)
+
+      return () => clearInterval(interval)
+    }
+  }, [isOpen])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -71,8 +83,15 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-      <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4 bg-gradient-to-br from-pink-50 to-purple-50 border border-pink-200 shadow-2xl">
-        <div className="flex justify-between items-center mb-6">
+      <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4 bg-gradient-to-br from-pink-50 to-purple-50 border border-pink-200 shadow-2xl relative">
+        {/* Prominent banner at the top */}
+        <div
+          className={`absolute -top-16 left-0 right-0 bg-gradient-to-r from-pink-600 to-purple-600 text-white py-3 px-4 rounded-t-xl text-center font-bold text-lg shadow-lg transform transition-transform duration-500 ${animatePrompt ? "scale-105" : "scale-100"}`}
+        >
+          Ro'yhatdan o'ting telegram kanalga qo'shiling!
+        </div>
+
+        <div className="flex justify-between items-center mb-6 mt-4">
           <h2 className="text-3xl font-bold text-pink-900">Ro'yxatdan o'tish</h2>
           <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
             ✖
