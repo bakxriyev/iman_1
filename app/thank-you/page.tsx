@@ -38,18 +38,8 @@ export default function ThankYouPage() {
   }
 
   return (
-    <div className="min-h-screen relative bg-[#041a2e] flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen relative bg-[#041a2e] flex flex-col items-center justify-center p-4 bg-sky-950">
       {/* Background image with bokeh effect */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/background.jpg"
-          alt="Background"
-          fill
-          className="object-cover opacity-80"
-          priority
-        />
-      </div>
-
       <div className="text-center max-w-2xl z-10 p-10 rounded-2xl bg-[#0a2a4a]/60 backdrop-blur-sm border border-[#4db5ff]/20">
         <div className="w-40 h-40 mx-auto mb-6 relative">
           <Image
