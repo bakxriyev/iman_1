@@ -4,10 +4,13 @@ import { useState } from "react"
 import Image from "next/image"
 import { useToast } from "../hooks/use_toast"
 import RegistrationModal from "./register-modal"
+import { useRouter } from "next/navigation"
+import axios from "axios"
 
 export default function LandingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const { toast } = useToast()
+  const router = useRouter()
 
   const handleRegister = () => {
     setIsModalOpen(true)
@@ -18,20 +21,28 @@ export default function LandingPage() {
     phone_number: string
     tg_user: string
   }) => {
+    // Close the modal immediately
+    setIsModalOpen(false)
+
+    // Show toast and redirect immediately to thank-you page
     toast({
-      title: "Iltimos biroz kuting",
+      title: "Muvaffaqiyatli ro'yxatdan o'tdingiz!",
       description: "Ma'lumotlaringiz yuborilmoqda...",
       duration: 3000,
     })
-    
-    // Here you would typically send the data to your API
-    console.log("Form submitted:", data)
-    
-    // Close the modal
-    setIsModalOpen(false)
-    window.location.href = "/thank-you?pending=true"
 
-    // Redirect to thank you page
+    // Redirect immediately without waiting for API response
+    router.push("/thank-you?pending=true")
+
+    // Send data to backend in the background after redirect
+    try {
+      // This will run in the background after the page transition
+      axios.post(`${process.env.NEXT_PUBLIC_API_URL || "/api"}/users`, data).catch((error) => {
+        console.error("Background submission error:", error)
+      })
+    } catch (error) {
+      console.error("Registration error:", error)
+    }
 
     return Promise.resolve()
   }
