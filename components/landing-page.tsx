@@ -114,11 +114,11 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="mt-4 bg-[#0a2a4a]/60 backdrop-blur-sm p-6 rounded-2xl border border-[#4db5ff]/20">
-              <h1 className="text-3xl md:text-5xl font-bold mb-2 text-white">
+              <h1 className="text-2xl md:text-5xl font-bold mb-2 text-white">
                 Iman Akhmedovnadan 2 kunlik Bepul Vebinar
               </h1>
-              <h1 className="text-3xl md:text-5xl font-bold text-[#4db5ff]">
+            <div className="mt-4 bg-[#0a2a4a]/60 backdrop-blur-sm p-6 rounded-2xl border border-[#4db5ff]/20">
+              <h1 className="text-3xl md:text-5xl font-bold text-white">
                 "21 kunda Intizomni Shakllantirishning Samarali 5 Usuli"
               </h1>
             </div>
