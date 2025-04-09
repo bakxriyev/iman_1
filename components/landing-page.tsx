@@ -2,21 +2,18 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { useToast } from "../hooks/use_toast"
-import RegistrationModal from "./register-modal"
 import { useRouter } from "next/navigation"
-import axios from "axios"
+import RegistrationModal from "./register-modal"
 
 export default function LandingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const { toast } = useToast()
   const router = useRouter()
 
   const handleRegister = () => {
     setIsModalOpen(true)
   }
 
-  const handleSubmit = async (data: {
+  const handleSubmit = (data: {
     full_name: string
     phone_number: string
     tg_user: string
@@ -24,40 +21,34 @@ export default function LandingPage() {
     // Close the modal immediately
     setIsModalOpen(false)
 
-    // Show toast and redirect immediately to thank-you page
-    toast({
-      title: "Muvaffaqiyatli ro'yxatdan o'tdingiz!",
-      description: "Ma'lumotlaringiz yuborilmoqda...",
-      duration: 3000,
-    })
-
-    // Redirect immediately without waiting for API response
+    // Redirect immediately without waiting
     router.push("/thank-you?pending=true")
 
     // Send data to backend in the background after redirect
     try {
-      // This will run in the background after the page transition
-      axios.post(`${process.env.NEXT_PUBLIC_API_URL || "/api"}/users`, data).catch((error) => {
-        console.error("Background submission error:", error)
-      })
+      // Use fetch instead of axios for smaller bundle size
+      fetch(`${process.env.NEXT_PUBLIC_API_URL || "/api"}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+        // Use keepalive to ensure the request completes even after navigation
+        keepalive: true,
+      }).catch((e) => console.error("Background submission error:", e))
     } catch (error) {
       console.error("Registration error:", error)
     }
-
-    return Promise.resolve()
   }
 
   return (
     <div className="min-h-screen relative bg-[#041a2e] overflow-hidden">
-      {/* Background image with bokeh effect */}
+      {/* Background image with bokeh effect - optimized */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/background.jpg"
-          alt="Background"
-          fill
-          className="object-cover opacity-80"
-          priority
-        />
+        <div
+          className="w-full h-full bg-[url('/background.jpg')] bg-cover bg-center opacity-80"
+          aria-hidden="true"
+        ></div>
       </div>
 
       {/* Content container */}
@@ -112,21 +103,22 @@ export default function LandingPage() {
                 fill
                 className="object-contain rounded-full border border-[#4db5ff]/20"
                 priority
+                sizes="160px"
               />
             </div>
 
             <div className="inline-block mb-2 px-4 py-2 bg-[#0a2a4a]/60 backdrop-blur-sm rounded-full">
               <div className="flex items-center justify-center gap-2">
-                <span className="text-white font-bold">BEPUL VEBINAR</span>
+                <span className="text-white font-bold">JONLI VEBINAR</span>
                 <span className="bg-[#4db5ff]/20 text-[#4db5ff] px-2 py-0.5 text-xs font-bold rounded-md">LIVE</span>
               </div>
             </div>
 
-              <h1 className="text-xl md:text-3xl font-bold mb-2 text-white">
+            <div className="mt-4 bg-[#0a2a4a]/60 backdrop-blur-sm p-6 rounded-2xl border border-[#4db5ff]/20">
+              <h1 className="text-3xl md:text-5xl font-bold mb-2 text-white">
                 Iman Akhmedovnadan 2 kunlik Bepul Vebinar
               </h1>
-            <div className="mt-4 bg-[#0a2a4a]/60 backdrop-blur-sm p-6 rounded-2xl border border-[#4db5ff]/20">
-              <h1 className="text-3xl md:text-5xl font-bold text-white">
+              <h1 className="text-3xl md:text-5xl font-bold text-[#4db5ff]">
                 "21 kunda Intizomni Shakllantirishning Samarali 5 Usuli"
               </h1>
             </div>
