@@ -32,7 +32,7 @@ export default function LandingPageComponent() {
       <div className="max-w-md mx-auto px-6">
         {/* Bold Headline */}
         <h1 className="text-2xl font-black text-black text-center mb-6 leading-tight">
-          DANGASALIKDAN HALOS BO'LISHNING 3 TA YO'LI
+          DANGASALIKDAN HALOS BO&apos;LISHNING 3 TA YO&apos;LI
         </h1>
 
         {/* Description */}
@@ -81,7 +81,7 @@ export default function LandingPageComponent() {
               "Nima uchun dangasalik kasaliga chalinamiz?",
               "Dangasalikni ichki ruhiy sabablari?",
               "Dangasalikni hech kim bilmaydigan eng muhim omili",
-              "O'zgarishga harakat qilish, lekin uddalay olmaslikni psixologik omillari",
+              "O&apos;zgarishga harakat qilish, lekin uddalay olmaslikni psixologik omillari",
             ].map((topic, index) => (
               <li key={index} className="flex items-start">
                 <span className="text-red-500 mr-3 mt-1">•</span>
@@ -99,7 +99,7 @@ export default function LandingPageComponent() {
               "Dangasalikdan qutilush uchun eng ishlaydigan texnikalar",
               "Tuganmas energiya holatida yashash siri",
               "Dangasalikdan 1 kunda halos qiladigan 1 ta amal va duo",
-              "O'zini prorabotka qilish orqali halovatda yashashni boshlash",
+              "O&apos;zini prorabotka qilish orqali halovatda yashashni boshlash",
             ].map((benefit, index) => (
               <li key={index} className="flex items-start">
                 <span className="text-green-500 mr-3 mt-1">✓</span>
