@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
-import { useToast } from "@/hooks/use_toast"
+import { useToast } from "../hooks/use_toast"
 
 export function Toaster() {
   const { toasts, dismissToast } = useToast()

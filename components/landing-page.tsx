@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import RegistrationModal from "@/components/register-modal"
+import RegistrationModal from "../components/register-modal"
 
 export default function LandingPageComponent() {
   const [isModalOpen, setIsModalOpen] = useState(false)
