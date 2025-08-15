@@ -24,7 +24,7 @@ export default function LandingPageComponent() {
       {/* Date Badge */}
       <div className="flex justify-center pt-8 pb-6">
         <div className="bg-white border-2 border-black rounded-full px-6 py-2">
-          <span className="text-black font-bold text-lg">3, 4, 5-SENTABR, 20:00</span>
+          <span className="text-black font-bold text-lg">2, 3, 4-SENTABR, 20:00</span>
         </div>
       </div>
 
