@@ -7,7 +7,6 @@ export default function ThankYouPage() {
 
   const handleJoinTelegram = () => {
     window.open("https://t.me/+HzuHstfa6x04MjAy", "_blank")
-    // Redirect back to main page after a short delay
     setTimeout(() => {
       router.push("/")
     }, 500)
@@ -18,7 +17,7 @@ export default function ThankYouPage() {
       <div className="text-center max-w-md">
         <h1 className="text-5xl font-bold text-[#4caf50] mb-6">Oxirgi qadam qoldi</h1>
         <p className="text-xl text-gray-800 mb-12 max-w-sm mx-auto">
-          Jonli efirda qatnashish uchun quyidagi ko'k tugmani bosib yopiq kanalga obuna bo'ling!
+          Jonli efirda qatnashish uchun quyidagi ko&apos;k tugmani bosib yopiq kanalga obuna bo&apos;ling!
         </p>
         <div className="flex flex-col items-center">
           <svg
@@ -40,7 +39,7 @@ export default function ThankYouPage() {
             onClick={handleJoinTelegram}
             className="bg-[#2196f3] text-white font-bold text-xl py-4 px-12 rounded-full shadow-lg hover:bg-[#1e88e5] transition-colors w-full max-w-xs"
           >
-            OBUNA BO'LISH
+            OBUNA BO&apos;LISH
           </button>
         </div>
       </div>
