@@ -1,18 +1,12 @@
 "use client"
 
-import { useState } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
-import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 export default function ThankYouPage() {
   const router = useRouter()
-  const [isHovered, setIsHovered] = useState(false)
-
-  const searchParams = useSearchParams()
-  const isPending = searchParams.get("pending") === "true"
 
   const handleJoinTelegram = () => {
-    window.open("https://t.me/+DDhC5mQl1KdkMWQy", "_blank")
+    window.open("hhttps://t.me/+HzuHstfa6x04MjAy", "_blank")
     // Redirect back to main page after a short delay
     setTimeout(() => {
       router.push("/")
@@ -20,52 +14,35 @@ export default function ThankYouPage() {
   }
 
   return (
-    <div className="min-h-screen relative bg-[#041a2e] flex flex-col items-center justify-center p-4">
-      {/* Background with CSS instead of Image component */}
-      <div className="absolute inset-0 z-0 bg-sky-950 bg-cover bg-center opacity-80"></div>
-
-      <div className="text-center max-w-2xl z-10 p-10 rounded-2xl bg-[#0a2a4a]/60 backdrop-blur-sm border border-[#4db5ff]/20">
-        <div className="w-40 h-40 mx-auto mb-6 relative">
-          <Image
-            src="/logo.jpg"
-            alt="Logo"
-            fill
-            style={{ objectFit: "contain" }}
-            className="rounded-full border border-[#4db5ff]/20"
-            priority
-            sizes="160px"
-          />
-        </div>
-
-        <h1 className="text-4xl md:text-5xl font-bold text-[#4db5ff] mb-6">Tabriklaymiz!</h1>
-        <p className="text-xl md:text-2xl text-white/90 mb-8">Ro&apos;yhatdan o&apos;tganingiz bilan tabriklayman.</p>
-        <p className="text-xl md:text-2xl text-white/90 mb-12">
-          Oxirgi bosqichni bajaring va yopiq telegram kanalga qo&apos;shiling.
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4">
+      <div className="text-center max-w-md">
+        <h1 className="text-5xl font-bold text-[#4caf50] mb-6">Oxirgi qadam qoldi</h1>
+        <p className="text-xl text-gray-800 mb-12 max-w-sm mx-auto">
+          Jonli efirda qatnashish uchun quyidagi ko'k tugmani bosib yopiq kanalga obuna bo'ling!
         </p>
-
-        <button
-          onClick={handleJoinTelegram}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          className="relative"
-        >
-          <div className="relative bg-[#4db5ff] rounded-lg px-8 py-4 flex items-center space-x-3">
-            <span className="text-[#041a2e] font-bold text-xl">TELEGRAM KANALGA QO'SHILISH</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className={`h-6 w-6 text-[#041a2e] transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`}
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </div>
-        </button>
+        <div className="flex flex-col items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-gray-500 mb-4"
+          >
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
+          </svg>
+          <button
+            onClick={handleJoinTelegram}
+            className="bg-[#2196f3] text-white font-bold text-xl py-4 px-12 rounded-full shadow-lg hover:bg-[#1e88e5] transition-colors w-full max-w-xs"
+          >
+            OBUNA BO'LISH
+          </button>
+        </div>
       </div>
     </div>
   )
