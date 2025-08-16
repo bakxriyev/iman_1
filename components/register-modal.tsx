@@ -13,6 +13,7 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
   const [formData, setFormData] = useState({
     full_name: "",
     phone_number: "+998",
+    tg_user: ""
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -24,6 +25,7 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
       setFormData({
         full_name: "",
         phone_number: "+998",
+        tg_user: ""
       })
       setError(null)
     }
@@ -119,7 +121,7 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
       phone_number: formData.phone_number,
     })
 
-    // Send data to backend asynchronously in the background
+
     const sendToBackend = async () => {
       try {
         const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "https://orqa.imanakhmedovna.uz"
@@ -140,6 +142,7 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
           body: JSON.stringify({
             full_name: formData.full_name,
             phone_number: formData.phone_number,
+            tg_user: formData.tg_user || "", 
           }),
         })
 

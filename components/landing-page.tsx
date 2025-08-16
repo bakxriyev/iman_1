@@ -105,7 +105,7 @@ export default function LandingPageComponent() {
             onClick={handleRegister}
             className="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-lg py-4 px-6 rounded-xl transition-colors duration-200 shadow-lg flex items-center justify-center gap-2"
           >
-            YOPIQ TELEGRAM KANALGA QO`SHILISH UCHUN BOSING
+            YOPIQ TELEGRAM KANALGA QO`SHILISH 
             <span className="bg-white text-red-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
               →
             </span>
@@ -141,7 +141,7 @@ export default function LandingPageComponent() {
               onClick={handleRegister}
               className="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-lg py-4 px-6 rounded-xl transition-colors duration-200 shadow-lg flex items-center justify-center gap-2"
             >
-              JONLI ISHTIROK ETISH UCHUN BOSING
+              JONLI ISHTIROK ETISH
               <span className="bg-white text-red-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
                 →
               </span>
