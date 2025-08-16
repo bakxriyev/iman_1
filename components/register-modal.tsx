@@ -6,14 +6,13 @@ import { useState, useRef, useEffect } from "react"
 interface RegistrationModalProps {
   isOpen: boolean
   onClose: () => void
-  onSubmit: (data: { full_name: string; phone_number: string; tg_user: string }) => void
+  onSubmit: (data: { full_name: string; phone_number: string }) => void
 }
 
 export default function RegistrationModal({ isOpen, onClose, onSubmit }: RegistrationModalProps) {
   const [formData, setFormData] = useState({
     full_name: "",
     phone_number: "+998",
-    tg_user: "",
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -25,7 +24,6 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
       setFormData({
         full_name: "",
         phone_number: "+998",
-        tg_user: "",
       })
       setError(null)
     }
@@ -116,8 +114,10 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
     setLoading(true)
     setError(null)
 
-    // Immediately call onSubmit to redirect to thank you page
-    onSubmit(formData)
+    onSubmit({
+      full_name: formData.full_name,
+      phone_number: formData.phone_number,
+    })
 
     // Send data to backend asynchronously in the background
     const sendToBackend = async () => {
@@ -140,7 +140,6 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
           body: JSON.stringify({
             full_name: formData.full_name,
             phone_number: formData.phone_number,
-            tg_user: formData.tg_user || null, // Send null if empty
           }),
         })
 
@@ -304,33 +303,6 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
             />
           </div>
 
-          <div className="space-y-2">
-            <label htmlFor="tg_user" className="text-white/80 text-sm flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 mr-2 text-[#4db5ff]"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              Telegram username (ixtiyoriy):
-            </label>
-            <input
-              id="tg_user"
-              name="tg_user"
-              value={formData.tg_user}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-[#0a2a4a]/60 border border-[#4db5ff]/20 rounded-lg focus:ring-2 focus:ring-[#4db5ff]/50 text-white placeholder-white/50"
-              placeholder="@username"
-            />
-          </div>
-
           <button type="submit" disabled={loading} className="relative w-full">
             <div className="relative bg-[#4db5ff] rounded-lg py-3 px-6 flex items-center justify-center">
               {loading ? (
@@ -358,7 +330,7 @@ export default function RegistrationModal({ isOpen, onClose, onSubmit }: Registr
                   <span className="text-[#041a2e] font-bold">Yuborilmoqda...</span>
                 </>
               ) : (
-                <span className="text-[#041a2e] font-bold">Davom etish</span>
+                <span className="text-[#041a2e] font-bold">Yopiq kanalga qo'shilish</span>
               )}
             </div>
           </button>

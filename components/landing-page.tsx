@@ -13,7 +13,7 @@ export default function LandingPageComponent() {
     setIsModalOpen(true)
   }
 
-  const handleModalSubmit = (data: { full_name: string; phone_number: string; tg_user: string }) => {
+  const handleModalSubmit = (data: { full_name: string; phone_number: string; }) => {
     console.log("Registration data:", data)
     setIsModalOpen(false)
     router.push("/thank-you")
@@ -30,17 +30,13 @@ export default function LandingPageComponent() {
 
       {/* Main Content Container */}
       <div className="max-w-sm mx-auto px-4">
-        <h1 className="text-2xl font-black text-white text-center mb-2 leading-tight">
+        <h1 className="text-2xl font-black text-white text-center leading-tight bg-red-600 rounded-xl p-2 mb-4 ">
           "DANGASALIKDAN QUTUL VA XOTIRJAM HAYOTDA YASHA"
         </h1>
 
         <p className="text-center text-lg font-bold text-white mb-6">IMAN AHMEDOVADAN 3 KUNLIK BEPUL MAXSUS DARS</p>
 
-        <div className="bg-red-600 rounded-xl p-4 mb-6">
-          <p className="text-white text-sm font-medium text-center">
-            Qanday qilib kibr, dangasalik va qoʻrquvlarni yengish orqali asliyatingizga qaytib, toʻkis hayotda yashashni 3 kunlik darsimda oʻrgataman.
-          </p>
-        </div>
+
 
         {/* Professional Photo */}
         <div className="flex justify-center mb-6">
@@ -69,7 +65,6 @@ export default function LandingPageComponent() {
           <p className="text-center text-sm text-gray-400 mt-2">Bepul qatnashish uchun bosing</p>
         </div>
 
-        
         <div className="mb-6">
           <h2 className="text-xl font-black text-white text-center mb-6">ONLAYN BEPUL DARSDA SIZ:</h2>
 
@@ -110,50 +105,50 @@ export default function LandingPageComponent() {
             onClick={handleRegister}
             className="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-lg py-4 px-6 rounded-xl transition-colors duration-200 shadow-lg flex items-center justify-center gap-2"
           >
-            BEPUL QATNASHISH
+            YOPIQ TELEGRAM KANALGA QO`SHILISH UCHUN BOSING
             <span className="bg-white text-red-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
               →
             </span>
           </button>
+
           <p className="text-center text-sm text-gray-400 mt-2">Bepul qatnashish uchun bosing</p>
-           <div className="bg-gray-800 rounded-xl p-4 mb-6 border border-gray-700">
-          <div className="flex justify-center mb-3">
-            <Image
-              src="/photo.jpg"
-              alt="Iman Ahmedova Logo"
-              width={80}
-              height={80}
-              className="rounded-full shadow-md"
-              style={{ width: "80px", height: "80px", objectFit: "cover" }}
-            />
+          <br />
+          <div className="bg-gray-800 rounded-xl p-4 mb-6 border border-gray-700">
+            <div className="flex justify-center mb-3">
+              <Image
+                src="/photo.jpg"
+                alt="Iman Ahmedova Logo"
+                width={80}
+                height={80}
+                className="rounded-full shadow-md"
+                style={{ width: "80px", height: "80px", objectFit: "cover" }}
+              />
+            </div>
+            <h3 className="font-bold text-white text-center mb-3">IMAN AHMEDOVA</h3>
+            <ul className="text-xs text-gray-300 space-y-1">
+              <li>• Oilaviy munosabatlar va bolalar psixologi</li>
+              <li>• Prezidentimiz tomonidan taqdirlangan 30 yillik ko'krak nishoni sohibasi</li>
+              <li>• 3 yillik tajriba</li>
+              <li>• 50.000 dan ortiq o'quvchilar</li>
+              <li>• Psixologlar assotsiatsiyasi a'zosi</li>
+              <li>• PHD mustaqil izlanuvchisi</li>
+            </ul>
           </div>
-          <h3 className="font-bold text-white text-center mb-3">IMAN AHMEDOVA</h3>
-          <ul className="text-xs text-gray-300 space-y-1">
-            <li>• Oilaviy munosabatlar va bolalar psixologi</li>
-            <li>• Prezidentimiz tomonidan taqdirlangan 30 yillik ko'krak nishoni sohibasi</li>
-            <li>• 3 yillik tajriba</li>
-            <li>• 50.000 dan ortiq o'quvchilar</li>
-            <li>• Psixologlar assotsiatsiyasi a'zosi</li>
-            <li>• PHD mustaqil izlanuvchisi</li>
-          </ul>
-        </div>
 
-        {/* Main CTA Button */}
-        <div className="mb-6">
-          <button
-            onClick={handleRegister}
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-lg py-4 px-6 rounded-xl transition-colors duration-200 shadow-lg flex items-center justify-center gap-2"
-          >
-            BEPUL QATNASHISH
-            <span className="bg-white text-red-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
-              →
-            </span>
-          </button>
-          <p className="text-center text-sm text-gray-400 mt-2">Bepul qatnashish uchun bosing</p>
+          {/* Main CTA Button */}
+          <div className="mb-6">
+            <button
+              onClick={handleRegister}
+              className="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-lg py-4 px-6 rounded-xl transition-colors duration-200 shadow-lg flex items-center justify-center gap-2"
+            >
+              JONLI ISHTIROK ETISH UCHUN BOSING
+              <span className="bg-white text-red-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+                →
+              </span>
+            </button>
+            <p className="text-center text-sm text-gray-400 mt-2">Bepul qatnashish uchun bosing</p>
+          </div>
         </div>
-        </div>
-       
-
       </div>
 
       <RegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSubmit={handleModalSubmit} />
