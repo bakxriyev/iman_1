@@ -20,104 +20,140 @@ export default function LandingPageComponent() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Date Badge */}
-      <div className="flex justify-center pt-8 pb-6">
-        <div className="bg-white border-2 border-black rounded-full px-6 py-2">
-          <span className="text-black font-bold text-lg">2, 3, 4-SENTABR, 20:00</span>
+    <div className="min-h-screen bg-gray-900">
+      <div className="flex justify-center pt-6 pb-4">
+        <div className="bg-gray-800 rounded-full px-6 py-3 border border-gray-700 flex items-center gap-2">
+          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+          <span className="text-white font-semibold text-sm">2-3-4 SENTABR 20:00</span>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="max-w-md mx-auto px-6">
-        {/* Bold Headline */}
-        <h1 className="text-2xl font-black text-black text-center mb-6 leading-tight">
-          DANGASALIKDAN HALOS BO&apos;LISHNING 3 TA YO&apos;LI
+      {/* Main Content Container */}
+      <div className="max-w-sm mx-auto px-4">
+        <h1 className="text-2xl font-black text-white text-center mb-2 leading-tight">
+          "DANGASALIKDAN QUTUL VA XOTIRJAM HAYOTDA YASHA"
         </h1>
 
-        {/* Description */}
-        <p className="text-center text-black mb-8 leading-relaxed">
-          Jonli Bepul Vebinar davomida quyidagilar haqida gaplashamiz
-        </p>
+        <p className="text-center text-lg font-bold text-white mb-6">IMAN AHMEDOVADAN 3 KUNLIK BEPUL MAXSUS DARS</p>
 
-        {/* Photo Section */}
-        <div className="relative mb-8">
-          <div className="flex justify-center">
-            <div className="relative">
-              <Image
-                src="/photo.jpg"
-                alt="Iman Akhmedovna"
-                width={280}
-                height={350}
-                className="rounded-2xl"
-                style={{ width: "280px", height: "350px", objectFit: "cover" }}
-                priority
-              />
+        <div className="bg-red-600 rounded-xl p-4 mb-6">
+          <p className="text-white text-sm font-medium text-center">
+            Qanday qilib kibr, dangasalik va qoʻrquvlarni yengish orqali asliyatingizga qaytib, toʻkis hayotda yashashni 3 kunlik darsimda oʻrgataman.
+          </p>
+        </div>
 
-              {/* Name overlay */}
-              <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3">
-                <h3 className="font-bold text-black text-lg">Iman Akhmedova</h3>
-                <p className="text-sm text-gray-700">Oilaviy munosabatlar va bolalar psixologi</p>
+        {/* Professional Photo */}
+        <div className="flex justify-center mb-6">
+          <div className="relative">
+            <Image
+              src="/photo.jpg"
+              alt="Iman Ahmedova"
+              width={280}
+              height={320}
+              className="rounded-2xl shadow-lg"
+              style={{ width: "280px", height: "320px", objectFit: "cover" }}
+              priority
+            />
+          </div>
+        </div>
+        <div className="mb-6">
+          <button
+            onClick={handleRegister}
+            className="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-lg py-4 px-6 rounded-xl transition-colors duration-200 shadow-lg flex items-center justify-center gap-2"
+          >
+            BEPUL QATNASHISH
+            <span className="bg-white text-red-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+              →
+            </span>
+          </button>
+          <p className="text-center text-sm text-gray-400 mt-2">Bepul qatnashish uchun bosing</p>
+        </div>
+
+        
+        <div className="mb-6">
+          <h2 className="text-xl font-black text-white text-center mb-6">ONLAYN BEPUL DARSDA SIZ:</h2>
+
+          <div className="space-y-4">
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span className="text-white text-sm">✓</span>
               </div>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Qanday qilib maqsadlarni rejaga aylantirish va ularni kichik qismlarga bo'lish orqali amalga oshirish;
+              </p>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span className="text-white text-sm">✓</span>
+              </div>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Qanday qilib daromadni to'g'ri taqsimlash orqali chiqimlarni kamaytirish va pulni to'g'ri boshqarish;
+              </p>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span className="text-white text-sm">✓</span>
+              </div>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Vaqtingizni to'g'ri tizimlab, o'zingizga, oilangizga, ishingizga va yaqinlaringizga vaqt ajratishni
+                hamda ko'plab foydali bilimlarni bepul o'rganasiz.
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Red CTA Button */}
-        <div className="mb-8">
-          <button
-            onClick={handleRegister}
-            className="w-full bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-4 px-6 rounded-2xl transition-colors duration-200"
-          >
-            BEPUL QATNASHISH &gt;&gt;&gt;
-          </button>
-        </div>
-
-        {/* Dark Bottom Section */}
-        <div className="bg-gray-900 text-white rounded-2xl p-6 mb-8">
-          <h2 className="text-xl font-bold text-center mb-4">JONLI BEPUL VEBINAR DAVOMIDA:</h2>
-          <ul className="space-y-3">
-            {[
-              "Nima uchun dangasalik kasaliga chalinamiz?",
-              "Dangasalikni ichki ruhiy sabablari?",
-              "Dangasalikni hech kim bilmaydigan eng muhim omili",
-              "O&apos;zgarishga harakat qilish, lekin uddalay olmaslikni psixologik omillari",
-            ].map((topic, index) => (
-              <li key={index} className="flex items-start">
-                <span className="text-red-500 mr-3 mt-1">•</span>
-                <span className="text-sm leading-relaxed">{topic}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Benefits Section */}
-        <div className="mb-8">
-          <h3 className="text-lg font-bold text-black text-center mb-4">Bepul Vebinardan qanday foydalar olasiz?</h3>
-          <ul className="space-y-3">
-            {[
-              "Dangasalikdan qutilush uchun eng ishlaydigan texnikalar",
-              "Tuganmas energiya holatida yashash siri",
-              "Dangasalikdan 1 kunda halos qiladigan 1 ta amal va duo",
-              "O&apos;zini prorabotka qilish orqali halovatda yashashni boshlash",
-            ].map((benefit, index) => (
-              <li key={index} className="flex items-start">
-                <span className="text-green-500 mr-3 mt-1">✓</span>
-                <span className="text-sm text-gray-700 leading-relaxed">{benefit}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Final CTA */}
+        {/* Final CTA Button */}
         <div className="pb-8">
           <button
             onClick={handleRegister}
-            className="w-full bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-4 px-6 rounded-2xl transition-colors duration-200"
+            className="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-lg py-4 px-6 rounded-xl transition-colors duration-200 shadow-lg flex items-center justify-center gap-2"
           >
-            ISHTIROK ETISH - BEPUL
+            BEPUL QATNASHISH
+            <span className="bg-white text-red-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+              →
+            </span>
           </button>
+          <p className="text-center text-sm text-gray-400 mt-2">Bepul qatnashish uchun bosing</p>
+           <div className="bg-gray-800 rounded-xl p-4 mb-6 border border-gray-700">
+          <div className="flex justify-center mb-3">
+            <Image
+              src="/photo.jpg"
+              alt="Iman Ahmedova Logo"
+              width={80}
+              height={80}
+              className="rounded-full shadow-md"
+              style={{ width: "80px", height: "80px", objectFit: "cover" }}
+            />
+          </div>
+          <h3 className="font-bold text-white text-center mb-3">IMAN AHMEDOVA</h3>
+          <ul className="text-xs text-gray-300 space-y-1">
+            <li>• Oilaviy munosabatlar va bolalar psixologi</li>
+            <li>• Prezidentimiz tomonidan taqdirlangan 30 yillik ko'krak nishoni sohibasi</li>
+            <li>• 3 yillik tajriba</li>
+            <li>• 50.000 dan ortiq o'quvchilar</li>
+            <li>• Psixologlar assotsiatsiyasi a'zosi</li>
+            <li>• PHD mustaqil izlanuvchisi</li>
+          </ul>
         </div>
+
+        {/* Main CTA Button */}
+        <div className="mb-6">
+          <button
+            onClick={handleRegister}
+            className="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-lg py-4 px-6 rounded-xl transition-colors duration-200 shadow-lg flex items-center justify-center gap-2"
+          >
+            BEPUL QATNASHISH
+            <span className="bg-white text-red-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+              →
+            </span>
+          </button>
+          <p className="text-center text-sm text-gray-400 mt-2">Bepul qatnashish uchun bosing</p>
+        </div>
+        </div>
+       
+
       </div>
 
       <RegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSubmit={handleModalSubmit} />
